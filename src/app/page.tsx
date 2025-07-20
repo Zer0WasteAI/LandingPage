@@ -739,7 +739,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 sm:py-12 px-4">
         <div className="container-responsive">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="text-xl sm:text-2xl font-bold text-[var(--primary-green)] mb-3 sm:mb-4">
                 ZeroWasteAI
@@ -766,7 +766,38 @@ export default function Home() {
               <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
                 <li><a href="#" className="hover:text-white transition-colors">{language === 'es' ? 'Centro de Ayuda' : 'Help Center'}</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">{language === 'es' ? 'Contáctanos' : 'Contact Us'}</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">{language === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{language === 'es' ? 'Legal' : 'Legal'}</h3>
+              <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
+                <li>
+                  <a 
+                    href="/privacy" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors flex items-center group"
+                  >
+                    <span>{language === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}</span>
+                    <svg className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="/terms" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors flex items-center group"
+                  >
+                    <span>{language === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions'}</span>
+                    <svg className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
             
