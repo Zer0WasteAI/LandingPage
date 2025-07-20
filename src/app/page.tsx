@@ -17,7 +17,6 @@ import {
   faQuestionCircle, 
   faMobile, 
   faGlobe, 
-  faAndroid,
   faCarrot,
   faLeaf,
   faPepperHot,
@@ -161,8 +160,8 @@ export default function Home() {
           },
           {
             name: 'Chef',
-            price: '$9.99/month',
-            yearlyPrice: '$99.99/year (Save 17%)',
+            price: '$5.00/month',
+            yearlyPrice: '$50.00/year (Save 17%)',
             featured: true,
             features: [
               'Unlimited ingredient scanning',
@@ -173,19 +172,6 @@ export default function Home() {
               'Priority customer support',
               'Advanced dietary customization',
               'Family sharing (up to 4 members)'
-            ]
-          },
-          {
-            name: 'Household',
-            price: '$16.99/month',
-            yearlyPrice: '$179.99/year (Save 12%)',
-            features: [
-              'Everything in Chef Plus:',
-              'Up to 8 family members',
-              'Shared shopping lists',
-              'Household impact dashboard',
-              'Bulk recipe planning',
-              'Advanced meal coordination'
             ]
           }
         ]
@@ -311,8 +297,8 @@ export default function Home() {
           },
           {
             name: 'Chef',
-            price: '$9.99/mes',
-            yearlyPrice: '$99.99/año (Ahorra 17%)',
+            price: '$5.00/mes',
+            yearlyPrice: '$50.00/año (Ahorra 17%)',
             featured: true,
             features: [
               'Escaneo ilimitado de ingredientes',
@@ -323,19 +309,6 @@ export default function Home() {
               'Soporte prioritario al cliente',
               'Personalización dietética avanzada',
               'Compartir familiar (hasta 4 miembros)'
-            ]
-          },
-          {
-            name: 'Hogar',
-            price: '$16.99/mes',
-            yearlyPrice: '$179.99/año (Ahorra 12%)',
-            features: [
-              'Todo en Chef Más:',
-              'Hasta 8 miembros de la familia',
-              'Listas de compras compartidas',
-              'Panel de impacto del hogar',
-              'Planificación de recetas en lote',
-              'Coordinación avanzada de comidas'
             ]
           }
         ]
@@ -366,13 +339,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <div className="text-xl sm:text-2xl font-bold text-[var(--primary-green)]">
-                ZeroWasteAI
+              <div className="flex items-center space-x-3">
+                <img src="/icon.svg" alt="ZeroWasteAI Logo" className="h-8 w-8 sm:h-10 sm:w-10" />
+                <div className="text-xl sm:text-2xl font-bold text-[var(--primary-green)]">
+                  ZeroWasteAI
+                </div>
               </div>
             </div>
             
             {/* Desktop Navigation */}
-            <div className="hidden lg:block">
+            <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-6">
                 <a href="#features" className="text-gray-700 hover:text-[var(--primary-green)] px-3 py-2 text-sm font-medium transition-colors">
                   {currentContent.nav.features}
@@ -392,7 +368,7 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="hidden lg:block">
+            <div className="hidden md:block">
               <button className="btn-primary text-sm px-4 py-2">
                 <FontAwesomeIcon icon={faDownload} className="mr-2" />
                 {currentContent.nav.download}
@@ -400,10 +376,11 @@ export default function Home() {
             </div>
 
             {/* Mobile menu button */}
-            <div className="lg:hidden">
+            <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-[var(--primary-green)] p-2"
+                className="text-gray-700 hover:text-[var(--primary-green)] p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                aria-label="Abrir menú de navegación"
               >
                 <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} size="lg" />
               </button>
@@ -412,27 +389,30 @@ export default function Home() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`mobile-menu lg:hidden ${isMenuOpen ? 'open' : ''}`}>
-          <div className="px-4 py-6 space-y-4">
+        <div className={`mobile-menu md:hidden ${isMenuOpen ? 'open' : ''}`}>
+          <div className="px-4 py-6 space-y-4 bg-white border-b border-gray-200">
             <a 
               href="#features" 
-              className="block text-gray-700 hover:text-[var(--primary-green)] py-2 text-base font-medium transition-colors"
+              className="block text-gray-700 hover:text-[var(--primary-green)] py-3 text-base font-medium transition-colors border-b border-gray-100 last:border-b-0"
               onClick={() => setIsMenuOpen(false)}
             >
+              <FontAwesomeIcon icon={faSearch} className="mr-3 text-[var(--primary-green)]" />
               {currentContent.nav.features}
             </a>
             <a 
               href="#how-it-works" 
-              className="block text-gray-700 hover:text-[var(--primary-green)] py-2 text-base font-medium transition-colors"
+              className="block text-gray-700 hover:text-[var(--primary-green)] py-3 text-base font-medium transition-colors border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
+              <FontAwesomeIcon icon={faUtensils} className="mr-3 text-[var(--primary-green)]" />
               {currentContent.nav.howItWorks}
             </a>
             <a 
               href="#pricing" 
-              className="block text-gray-700 hover:text-[var(--primary-green)] py-2 text-base font-medium transition-colors"
+              className="block text-gray-700 hover:text-[var(--primary-green)] py-3 text-base font-medium transition-colors border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
+              <FontAwesomeIcon icon={faGlobe} className="mr-3 text-[var(--primary-green)]" />
               {currentContent.nav.pricing}
             </a>
             <button
@@ -440,13 +420,13 @@ export default function Home() {
                 setLanguage(language === 'es' ? 'en' : 'es');
                 setIsMenuOpen(false);
               }}
-              className="block text-gray-700 hover:text-[var(--primary-green)] py-2 text-base font-medium transition-colors w-full text-left"
+              className="block text-gray-700 hover:text-[var(--primary-green)] py-3 text-base font-medium transition-colors w-full text-left border-b border-gray-100"
             >
               {language === 'es' ? '🇺🇸 English' : '🇪🇸 Español'}
             </button>
             <div className="pt-4">
               <button 
-                className="btn-primary w-full text-center"
+                className="btn-primary w-full text-center py-4 text-base"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FontAwesomeIcon icon={faDownload} className="mr-2" />
@@ -460,6 +440,12 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary-green-light)] via-white to-[var(--accent-blue)]/10"></div>
+        <div className="absolute inset-0 opacity-40">
+          <div className="w-full h-full" style={{
+            backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="#00B894" fill-opacity="0.03"><circle cx="30" cy="30" r="4"/></g></g></svg>')}")`,
+            backgroundRepeat: 'repeat'
+          }}></div>
+        </div>
         
         <div className="container-responsive relative z-10">
           <div className="text-center">
@@ -598,7 +584,7 @@ export default function Home() {
             {currentContent.features.map((feature, index) => (
               <div key={index} className="feature-card reveal-on-scroll">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 sm:mb-6">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[var(--primary-green)] rounded-full flex items-center justify-center text-white mb-3 sm:mb-0 sm:mr-4 flex-shrink-0">
+                  <div className="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-[var(--primary-green)] rounded-full flex items-center justify-center text-white mb-3 sm:mb-0 sm:mr-4 flex-shrink-0 transition-transform duration-300">
                     <FontAwesomeIcon icon={feature.icon} className="text-base sm:text-lg" />
                   </div>
                   <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">{feature.title}</h3>
@@ -629,9 +615,9 @@ export default function Home() {
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
             {currentContent.pricing.plans.map((plan, index) => (
-              <div key={index} className={`pricing-card reveal-on-scroll ${plan.featured ? 'featured' : ''} ${index === 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
+              <div key={index} className={`pricing-card reveal-on-scroll ${plan.featured ? 'featured' : ''}`}>
                 {plan.featured && (
                   <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2 bg-[var(--primary-green)] text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium">
                     {language === 'es' ? 'Más Popular' : 'Most Popular'}
@@ -810,7 +796,7 @@ export default function Home() {
           </div>
           
           <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400">
-            <p className="text-xs sm:text-sm">&copy; 2024 ZeroWasteAI. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
+            <p className="text-xs sm:text-sm">&copy; 2025 ZeroWasteAI. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
           </div>
         </div>
       </footer>
