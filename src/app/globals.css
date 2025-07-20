@@ -42,6 +42,35 @@ body {
   overflow-x: hidden;
 }
 
+/* FontAwesome Icon Stability */
+.fa, .fas, .far, .fal, .fab {
+  font-size: inherit !important;
+  width: auto !important;
+  height: auto !important;
+  display: inline-block !important;
+  vertical-align: baseline !important;
+}
+
+/* Prevent FontAwesome flash during navigation */
+svg[data-icon] {
+  display: inline-block !important;
+  font-size: inherit !important;
+  height: 1em !important;
+  width: auto !important;
+  vertical-align: -0.125em !important;
+}
+
+/* Page transition smoothing */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent layout shifts during navigation */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Typography */
 h1 {
   font-size: 3rem;

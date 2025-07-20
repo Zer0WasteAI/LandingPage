@@ -903,7 +903,7 @@ export default function Home() {
               <div key={index} className="bg-gray-50 rounded-lg p-4 sm:p-6 reveal-on-scroll hover:shadow-lg transition-shadow">
                 <div className="text-lg sm:text-xl lg:text-2xl mb-3 sm:mb-4">⭐⭐⭐⭐⭐</div>
                 <blockquote className="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base">
-                  "{testimonial.quote}"
+                  &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
                 <cite className="text-[var(--primary-green)] font-medium text-sm sm:text-base">
                   — {testimonial.author}
@@ -975,8 +975,32 @@ export default function Home() {
             <div>
               <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{language === 'es' ? 'Soporte' : 'Support'}</h3>
               <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
-                <li><a href="#" className="hover:text-white transition-colors">{language === 'es' ? 'Centro de Ayuda' : 'Help Center'}</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">{language === 'es' ? 'Contáctanos' : 'Contact Us'}</a></li>
+                <li>
+                  <a 
+                    href="/help" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors flex items-center group"
+                  >
+                    <span>{language === 'es' ? 'Centro de Ayuda' : 'Help Center'}</span>
+                    <svg className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="/contact" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors flex items-center group"
+                  >
+                    <span>{language === 'es' ? 'Contáctanos' : 'Contact Us'}</span>
+                    <svg className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
             

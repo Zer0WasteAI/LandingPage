@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje Recibido - ZeroWasteAI</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; background-color: #f8fafc;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        
+        <!-- Header -->
+        <div style="background: linear-gradient(135deg, #00B894 0%, #00A085 100%); padding: 30px 40px; text-align: center;">
+            <div style="display: inline-flex; align-items: center; justify-content: center;">
+                <div style="width: 40px; height: 40px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                    <span style="color: white; font-size: 20px;">🌱</span>
+                </div>
+                <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 700;">ZeroWasteAI</h1>
+            </div>
+            <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 14px;">¡Gracias por contactarnos!</p>
+        </div>
+        
+        <!-- Contenido principal -->
+        <div style="padding: 40px;">
+            
+            <!-- Icono de confirmación -->
+            <div style="text-align: center; margin-bottom: 24px;">
+                <div style="width: 80px; height: 80px; background-color: #E8F8F5; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <span style="font-size: 36px;">✅</span>
+                </div>
+                <h2 style="color: #1f2937; margin: 0; font-size: 24px; font-weight: 600;">
+                    ¡Mensaje Recibido!
+                </h2>
+            </div>
+            
+            <!-- Saludo personalizado -->
+            <div style="margin-bottom: 24px;">
+                <p style="color: #374151; font-size: 16px; line-height: 1.6; margin: 0;">
+                    Hola <strong>{{from_name}}</strong>,
+                </p>
+            </div>
+            
+            <!-- Mensaje principal -->
+            <div style="background-color: #f8fafc; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 16px 0;">
+                    ¡Gracias por contactarnos! Hemos recibido tu mensaje sobre: 
+                    <strong style="color: #00B894;">"{{subject}}"</strong>
+                </p>
+                
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 16px 0;">
+                    Nuestro equipo revisará tu consulta y te responderemos dentro de las próximas 
+                    <strong>24 horas</strong>. Mientras tanto, te invitamos a explorar nuestro Centro de Ayuda.
+                </p>
+                
+                <div style="background-color: #E8F8F5; border-left: 4px solid #00B894; padding: 16px; border-radius: 0 8px 8px 0;">
+                    <p style="color: #00B894; font-size: 14px; font-weight: 600; margin: 0 0 8px 0;">
+                        💡 ¿Necesitas ayuda inmediata?
+                    </p>
+                    <p style="color: #374151; font-size: 13px; line-height: 1.5; margin: 0;">
+                        Visita nuestro Centro de Ayuda para respuestas rápidas a preguntas comunes sobre escaneo de alimentos, gestión de inventario y más.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Botones de acción -->
+            <div style="text-align: center; margin-bottom: 32px;">
+                <a href="[TU_WEBSITE]/help" 
+                   style="background: linear-gradient(135deg, #00B894 0%, #00A085 100%); 
+                          color: white; 
+                          text-decoration: none; 
+                          padding: 12px 24px; 
+                          border-radius: 8px; 
+                          font-weight: 600; 
+                          font-size: 14px;
+                          display: inline-block;
+                          margin: 0 8px 8px 0;
+                          box-shadow: 0 2px 4px rgba(0, 184, 148, 0.3);">
+                    📚 Centro de Ayuda
+                </a>
+                
+                <a href="[TU_WEBSITE]" 
+                   style="background: transparent; 
+                          color: #00B894; 
+                          text-decoration: none; 
+                          padding: 12px 24px; 
+                          border: 2px solid #00B894;
+                          border-radius: 8px; 
+                          font-weight: 600; 
+                          font-size: 14px;
+                          display: inline-block;
+                          margin: 0 8px 8px 0;">
+                    🌐 Visitar Web
+                </a>
+            </div>
+            
+            <!-- Resumen del mensaje -->
+            <div style="border-top: 1px solid #e5e7eb; padding-top: 24px;">
+                <h4 style="color: #6b7280; font-size: 14px; font-weight: 600; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Resumen de tu mensaje
+                </h4>
+                
+                <div style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px;">
+                    <div style="margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 12px; font-weight: 600;">CATEGORÍA:</span>
+                        <span style="color: #374151; font-size: 12px; margin-left: 8px;">{{category}}</span>
+                    </div>
+                    <div style="margin-bottom: 8px;">
+                        <span style="color: #6b7280; font-size: 12px; font-weight: 600;">ASUNTO:</span>
+                        <span style="color: #374151; font-size: 12px; margin-left: 8px;">{{subject}}</span>
+                    </div>
+                    <div>
+                        <span style="color: #6b7280; font-size: 12px; font-weight: 600;">EMAIL:</span>
+                        <span style="color: #374151; font-size: 12px; margin-left: 8px;">{{from_email}}</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div style="background-color: #f8fafc; padding: 24px 40px; text-align: center; border-top: 1px solid #e5e7eb;">
+            <div style="margin-bottom: 16px;">
+                <span style="color: #00B894; font-weight: 600; font-size: 16px;">ZeroWasteAI</span>
+                <p style="color: #6b7280; font-size: 13px; margin: 4px 0 0 0;">
+                    Reduciendo el desperdicio de alimentos con IA 🌱
+                </p>
+            </div>
+            
+            <div style="color: #9ca3af; font-size: 11px; line-height: 1.4;">
+                <p style="margin: 0 0 8px 0;">
+                    📧 <a href="mailto:zerowasteai4@gmail.com" style="color: #00B894; text-decoration: none;">zerowasteai4@gmail.com</a>
+                </p>
+                <p style="margin: 0;">
+                    Si este mensaje no era para ti, puedes ignorarlo de forma segura.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

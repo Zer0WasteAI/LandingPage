@@ -7,13 +7,11 @@ import {
   faArrowLeft, 
   faGavel, 
   faHandshake, 
-  faShieldAlt, 
   faUserCheck,
   faClipboardList,
   faExclamationTriangle,
   faBrain,
   faCreditCard,
-  faGlobe,
   faBalanceScale
 } from '@fortawesome/free-solid-svg-icons';
 

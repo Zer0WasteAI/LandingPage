@@ -1,0 +1,33 @@
+✅ ¡MENSAJE RECIBIDO! - ZEROWASTEAI
+
+Hola {{from_name}},
+
+¡Gracias por contactarnos! 🌱
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📝 RESUMEN DE TU MENSAJE:
+• Categoría: {{category}}
+• Asunto: {{subject}}
+• Email: {{from_email}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🕒 TIEMPO DE RESPUESTA:
+Nuestro equipo revisará tu consulta y te responderemos dentro de las próximas 24 horas.
+
+💡 MIENTRAS TANTO:
+Visita nuestro Centro de Ayuda para respuestas rápidas:
+🔗 [TU_WEBSITE]/help
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌱 ZeroWasteAI
+Reduciendo el desperdicio de alimentos con IA
+
+📧 zerowasteai4@gmail.com
+🌐 [TU_WEBSITE_URL]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Si este mensaje no era para ti, puedes ignorarlo de forma segura.
