@@ -484,12 +484,12 @@ export default function Home() {
           <div className="mt-8 sm:mt-12 lg:mt-16 relative">
             <div className="flex justify-center">
               <div className="relative">
-                {/* TODO: add image of smartphone mockup showing the app interface with food scanning feature */}
-                <div className="w-48 h-72 sm:w-56 sm:h-84 lg:w-64 lg:h-96 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl sm:rounded-3xl shadow-2xl flex items-center justify-center animate-[float_3s_ease-in-out_infinite] border border-gray-300">
-                  <div className="text-center">
-                    <div className="text-2xl sm:text-3xl lg:text-4xl mb-2">📱</div>
-                    <span className="text-gray-600 text-xs sm:text-sm">App Screenshot</span>
-                  </div>
+                <div className="w-48 h-auto sm:w-56 lg:w-64 rounded-2xl sm:rounded-3xl shadow-2xl animate-[float_3s_ease-in-out_infinite] overflow-hidden">
+                  <img 
+                    src="/app-screenshots/Home_.png.png" 
+                    alt="ZeroWasteAI App Home Screen"
+                    className="w-full h-auto rounded-2xl sm:rounded-3xl"
+                  />
                 </div>
                 
                 {/* Floating elements - responsive sizes */}
@@ -602,6 +602,217 @@ export default function Home() {
                 </ul>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* App Screenshots Gallery */}
+      <section className="py-12 sm:py-16 px-4 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container-responsive">
+          <div className="text-center mb-12 sm:mb-16 reveal-on-scroll">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+              📱 {language === 'es' ? 'Mira ZeroWasteAI en Acción' : 'See ZeroWasteAI in Action'}
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-2">
+              {language === 'es' 
+                ? 'Descubre cómo nuestra aplicación transforma la gestión de alimentos con tecnología de vanguardia'
+                : 'Discover how our app transforms food management with cutting-edge technology'
+              }
+            </p>
+          </div>
+
+          {/* Main Feature Screenshots */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
+            {/* Food Scanning */}
+            <div className="text-center reveal-on-scroll group">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <img 
+                  src="/app-screenshots/Escaneo de comidas.png" 
+                  alt="Food Scanning Feature"
+                  className="w-full h-auto max-w-xs mx-auto rounded-xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">
+                {language === 'es' ? 'Escaneo Inteligente' : 'Smart Scanning'}
+              </h3>
+              <p className="text-gray-600 text-sm">
+                {language === 'es' ? 'Reconocimiento instantáneo de alimentos con IA' : 'Instant AI-powered food recognition'}
+              </p>
+            </div>
+
+            {/* Inventory Management */}
+            <div className="text-center reveal-on-scroll group">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <img 
+                  src="/app-screenshots/Inventario.png" 
+                  alt="Inventory Management"
+                  className="w-full h-auto max-w-xs mx-auto rounded-xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">
+                {language === 'es' ? 'Gestión de Inventario' : 'Inventory Management'}
+              </h3>
+              <p className="text-gray-600 text-sm">
+                {language === 'es' ? 'Control total de tus ingredientes y fechas' : 'Complete control of your ingredients and dates'}
+              </p>
+            </div>
+
+            {/* Impact Dashboard */}
+            <div className="text-center reveal-on-scroll group md:col-span-2 lg:col-span-1">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <img 
+                  src="/app-screenshots/Panel impact.png" 
+                  alt="Environmental Impact Dashboard"
+                  className="w-full h-auto max-w-xs mx-auto rounded-xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">
+                {language === 'es' ? 'Impacto Ambiental' : 'Environmental Impact'}
+              </h3>
+              <p className="text-gray-600 text-sm">
+                {language === 'es' ? 'Visualiza tu contribución al planeta' : 'Visualize your contribution to the planet'}
+              </p>
+            </div>
+          </div>
+
+          {/* Onboarding Flow */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl reveal-on-scroll">
+            <div className="text-center mb-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                🚀 {language === 'es' ? 'Configuración Súper Fácil' : 'Super Easy Setup'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'es' ? 'Solo 3 pasos para empezar a reducir desperdicio' : 'Just 3 steps to start reducing waste'}
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+              <div className="text-center group">
+                <div className="relative overflow-hidden rounded-xl shadow-lg bg-gray-50 p-3 mb-4 transform transition-all duration-300 hover:scale-105">
+                  <img 
+                    src="/app-screenshots/Onboarding-2.png" 
+                    alt="Setup Preferences"
+                    className="w-full h-auto max-w-[200px] mx-auto rounded-lg"
+                  />
+                </div>
+                <div className="flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 bg-[var(--primary-green)] rounded-full flex items-center justify-center text-white font-bold text-sm mr-2">1</div>
+                  <h4 className="font-semibold text-gray-900">
+                    {language === 'es' ? 'Preferencias' : 'Preferences'}
+                  </h4>
+                </div>
+                <p className="text-sm text-gray-600">
+                  {language === 'es' ? 'Configura tus alergias y preferencias' : 'Set your allergies and preferences'}
+                </p>
+              </div>
+
+              <div className="text-center group">
+                <div className="relative overflow-hidden rounded-xl shadow-lg bg-gray-50 p-3 mb-4 transform transition-all duration-300 hover:scale-105">
+                  <img 
+                    src="/app-screenshots/Onboarding-3.png" 
+                    alt="Cooking Level"
+                    className="w-full h-auto max-w-[200px] mx-auto rounded-lg"
+                  />
+                </div>
+                <div className="flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 bg-[var(--accent-blue)] rounded-full flex items-center justify-center text-white font-bold text-sm mr-2">2</div>
+                  <h4 className="font-semibold text-gray-900">
+                    {language === 'es' ? 'Nivel de Cocina' : 'Cooking Level'}
+                  </h4>
+                </div>
+                <p className="text-sm text-gray-600">
+                  {language === 'es' ? 'Dinos tu experiencia culinaria' : 'Tell us your culinary experience'}
+                </p>
+              </div>
+
+              <div className="text-center group">
+                <div className="relative overflow-hidden rounded-xl shadow-lg bg-gray-50 p-3 mb-4 transform transition-all duration-300 hover:scale-105">
+                  <img 
+                    src="/app-screenshots/Onboarding-4.png" 
+                    alt="Food Types"
+                    className="w-full h-auto max-w-[200px] mx-auto rounded-lg"
+                  />
+                </div>
+                <div className="flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 bg-[var(--accent-orange)] rounded-full flex items-center justify-center text-white font-bold text-sm mr-2">3</div>
+                  <h4 className="font-semibold text-gray-900">
+                    {language === 'es' ? 'Tipos de Comida' : 'Food Types'}
+                  </h4>
+                </div>
+                <p className="text-sm text-gray-600">
+                  {language === 'es' ? 'Selecciona tus alimentos favoritos' : 'Select your favorite foods'}
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center mt-8">
+              <div className="inline-flex items-center px-6 py-3 bg-green-50 border border-green-200 rounded-full">
+                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-green-700 font-medium text-sm">
+                  {language === 'es' ? '¡Listo! Empieza a escanear alimentos' : 'Ready! Start scanning food'}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Features Row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12">
+            <div className="text-center reveal-on-scroll group">
+              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <img 
+                  src="/app-screenshots/Comidas reconocidas.png" 
+                  alt="Recognized Foods"
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+              <p className="text-xs sm:text-sm text-gray-600 mt-2 font-medium">
+                {language === 'es' ? 'Reconocimiento' : 'Recognition'}
+              </p>
+            </div>
+
+            <div className="text-center reveal-on-scroll group">
+              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <img 
+                  src="/app-screenshots/Dietas.png" 
+                  alt="Diet Management"
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+              <p className="text-xs sm:text-sm text-gray-600 mt-2 font-medium">
+                {language === 'es' ? 'Dietas' : 'Diets'}
+              </p>
+            </div>
+
+            <div className="text-center reveal-on-scroll group">
+              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <img 
+                  src="/app-screenshots/Alergia.png" 
+                  alt="Allergy Detection"
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+              <p className="text-xs sm:text-sm text-gray-600 mt-2 font-medium">
+                {language === 'es' ? 'Alergias' : 'Allergies'}
+              </p>
+            </div>
+
+            <div className="text-center reveal-on-scroll group">
+              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <img 
+                  src="/app-screenshots/Perfil.png" 
+                  alt="User Profile"
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+              <p className="text-xs sm:text-sm text-gray-600 mt-2 font-medium">
+                {language === 'es' ? 'Perfil' : 'Profile'}
+              </p>
+            </div>
           </div>
         </div>
       </section>

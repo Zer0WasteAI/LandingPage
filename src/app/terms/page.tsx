@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faArrowLeft, 
@@ -18,6 +19,7 @@ import {
 
 export default function Terms() {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const router = useRouter();
 
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
@@ -169,11 +171,11 @@ Efectos de terminación:
         <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="flex items-center mb-4">
             <button 
-              onClick={() => window.history.back()}
+              onClick={() => router.push('/')}
               className="flex items-center text-[var(--primary-green)] hover:text-[var(--primary-green-dark)] transition-colors mr-4"
             >
               <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-              Volver
+              Volver al inicio
             </button>
           </div>
           
@@ -245,18 +247,12 @@ Efectos de terminación:
         <div className="mt-8 bg-[var(--primary-green)] text-white rounded-lg p-6 text-center">
           <h3 className="text-xl font-semibold mb-4">¿Tienes preguntas sobre estos términos?</h3>
           <p className="mb-4">Estamos aquí para ayudarte. Contáctanos si necesitas aclaraciones.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <a 
-              href="mailto:legal@zer0wasteai.com" 
+              href="mailto:zerowasteai4@gmail.com" 
               className="bg-white text-[var(--primary-green)] px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors"
             >
-              legal@zer0wasteai.com
-            </a>
-            <a 
-              href="mailto:support@zer0wasteai.com" 
-              className="bg-[var(--primary-green-dark)] text-white px-6 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors"
-            >
-              support@zer0wasteai.com
+              zerowasteai4@gmail.com
             </a>
           </div>
         </div>

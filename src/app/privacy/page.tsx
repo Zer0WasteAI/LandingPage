@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faArrowLeft, 
@@ -19,6 +20,7 @@ import {
 
 export default function Privacy() {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const router = useRouter();
 
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
@@ -205,7 +207,7 @@ Creemos que la privacidad es un derecho fundamental, no un privilegio. Por eso h
 • Otras jurisdicciones: Cumplimiento con leyes locales aplicables
 
 📧 Ejercer tus Derechos:
-Contáctanos en: support@zer0wasteai.com
+Contáctanos en: zerowasteai4@gmail.com
 • Respuesta en 48 horas para consultas generales
 • 30 días máximo para solicitudes de privacidad
 • 24 horas para problemas de seguridad`
@@ -263,11 +265,11 @@ Garantizamos que tus datos reciben el mismo nivel de protección sin importar d�
         <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="flex items-center mb-4">
             <button 
-              onClick={() => window.history.back()}
+              onClick={() => router.push('/')}
               className="flex items-center text-[var(--primary-green)] hover:text-[var(--primary-green-dark)] transition-colors mr-4"
             >
               <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-              Volver
+              Volver al inicio
             </button>
           </div>
           
@@ -339,18 +341,12 @@ Garantizamos que tus datos reciben el mismo nivel de protección sin importar d�
         <div className="mt-8 bg-blue-500 text-white rounded-lg p-6 text-center">
           <h3 className="text-xl font-semibold mb-4">¿Preguntas sobre tu privacidad?</h3>
           <p className="mb-4">Estamos aquí para ayudarte. La transparencia es fundamental para nosotros.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <a 
-              href="mailto:privacy@zer0wasteai.com" 
+              href="mailto:zerowasteai4@gmail.com" 
               className="bg-white text-blue-500 px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors"
             >
-              privacy@zer0wasteai.com
-            </a>
-            <a 
-              href="mailto:support@zer0wasteai.com" 
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors"
-            >
-              support@zer0wasteai.com
+              zerowasteai4@gmail.com
             </a>
           </div>
         </div>
