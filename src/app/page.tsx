@@ -23,7 +23,10 @@ import {
   faCheck,
   faLemon,
   faBars,
-  faTimes
+  faTimes,
+  faRocket,
+  faCogs,
+  faDollarSign
 } from '@fortawesome/free-solid-svg-icons';
 import { 
   faInstagram, 
@@ -396,7 +399,7 @@ export default function Home() {
               className="block text-gray-700 hover:text-[var(--primary-green)] py-3 text-base font-medium transition-colors border-b border-gray-100 last:border-b-0"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FontAwesomeIcon icon={faSearch} className="mr-3 text-[var(--primary-green)]" />
+              <FontAwesomeIcon icon={faRocket} className="mr-3 text-[var(--primary-green)]" />
               {currentContent.nav.features}
             </a>
             <a 
@@ -404,7 +407,7 @@ export default function Home() {
               className="block text-gray-700 hover:text-[var(--primary-green)] py-3 text-base font-medium transition-colors border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FontAwesomeIcon icon={faUtensils} className="mr-3 text-[var(--primary-green)]" />
+              <FontAwesomeIcon icon={faCogs} className="mr-3 text-[var(--primary-green)]" />
               {currentContent.nav.howItWorks}
             </a>
             <a 
@@ -412,7 +415,7 @@ export default function Home() {
               className="block text-gray-700 hover:text-[var(--primary-green)] py-3 text-base font-medium transition-colors border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FontAwesomeIcon icon={faGlobe} className="mr-3 text-[var(--primary-green)]" />
+              <FontAwesomeIcon icon={faDollarSign} className="mr-3 text-[var(--primary-green)]" />
               {currentContent.nav.pricing}
             </a>
             <button
@@ -625,7 +628,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
             {/* Food Scanning */}
             <div className="text-center reveal-on-scroll group">
-              <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-4 transform transition-all duration-300 hover:scale-102 hover:shadow-2xl mb-6">
                 <img 
                   src="/app-screenshots/Escaneo de comidas.png" 
                   alt="Food Scanning Feature"
@@ -633,17 +636,19 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">
-                {language === 'es' ? 'Escaneo Inteligente' : 'Smart Scanning'}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                {language === 'es' ? 'Reconocimiento instantáneo de alimentos con IA' : 'Instant AI-powered food recognition'}
-              </p>
+              <div className="relative z-10 pt-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {language === 'es' ? 'Escaneo Inteligente' : 'Smart Scanning'}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  {language === 'es' ? 'Reconocimiento instantáneo de alimentos con IA' : 'Instant AI-powered food recognition'}
+                </p>
+              </div>
             </div>
 
             {/* Inventory Management */}
             <div className="text-center reveal-on-scroll group">
-              <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-4 transform transition-all duration-300 hover:scale-102 hover:shadow-2xl mb-6">
                 <img 
                   src="/app-screenshots/Inventario.png" 
                   alt="Inventory Management"
@@ -651,17 +656,19 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">
-                {language === 'es' ? 'Gestión de Inventario' : 'Inventory Management'}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                {language === 'es' ? 'Control total de tus ingredientes y fechas' : 'Complete control of your ingredients and dates'}
-              </p>
+              <div className="relative z-10 pt-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {language === 'es' ? 'Gestión de Inventario' : 'Inventory Management'}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  {language === 'es' ? 'Control total de tus ingredientes y fechas' : 'Complete control of your ingredients and dates'}
+                </p>
+              </div>
             </div>
 
             {/* Impact Dashboard */}
             <div className="text-center reveal-on-scroll group md:col-span-2 lg:col-span-1">
-              <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-4 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-4 transform transition-all duration-300 hover:scale-102 hover:shadow-2xl mb-6">
                 <img 
                   src="/app-screenshots/Panel impact.png" 
                   alt="Environmental Impact Dashboard"
@@ -669,12 +676,14 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">
-                {language === 'es' ? 'Impacto Ambiental' : 'Environmental Impact'}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                {language === 'es' ? 'Visualiza tu contribución al planeta' : 'Visualize your contribution to the planet'}
-              </p>
+              <div className="relative z-10 pt-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {language === 'es' ? 'Impacto Ambiental' : 'Environmental Impact'}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  {language === 'es' ? 'Visualiza tu contribución al planeta' : 'Visualize your contribution to the planet'}
+                </p>
+              </div>
             </div>
           </div>
 
@@ -691,7 +700,7 @@ export default function Home() {
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
               <div className="text-center group">
-                <div className="relative overflow-hidden rounded-xl shadow-lg bg-gray-50 p-3 mb-4 transform transition-all duration-300 hover:scale-105">
+                <div className="relative overflow-hidden rounded-xl shadow-lg bg-gray-50 p-3 mb-6 transform transition-all duration-300 hover:scale-105">
                   <img 
                     src="/app-screenshots/Onboarding-2.png" 
                     alt="Setup Preferences"
@@ -710,7 +719,7 @@ export default function Home() {
               </div>
 
               <div className="text-center group">
-                <div className="relative overflow-hidden rounded-xl shadow-lg bg-gray-50 p-3 mb-4 transform transition-all duration-300 hover:scale-105">
+                <div className="relative overflow-hidden rounded-xl shadow-lg bg-gray-50 p-3 mb-6 transform transition-all duration-300 hover:scale-105">
                   <img 
                     src="/app-screenshots/Onboarding-3.png" 
                     alt="Cooking Level"
@@ -729,7 +738,7 @@ export default function Home() {
               </div>
 
               <div className="text-center group">
-                <div className="relative overflow-hidden rounded-xl shadow-lg bg-gray-50 p-3 mb-4 transform transition-all duration-300 hover:scale-105">
+                <div className="relative overflow-hidden rounded-xl shadow-lg bg-gray-50 p-3 mb-6 transform transition-all duration-300 hover:scale-105">
                   <img 
                     src="/app-screenshots/Onboarding-4.png" 
                     alt="Food Types"
@@ -763,55 +772,63 @@ export default function Home() {
           {/* Additional Features Row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12">
             <div className="text-center reveal-on-scroll group">
-              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-102 hover:shadow-lg mb-4">
                 <img 
                   src="/app-screenshots/Comidas reconocidas.png" 
                   alt="Recognized Foods"
                   className="w-full h-auto rounded-lg"
                 />
               </div>
-              <p className="text-xs sm:text-sm text-gray-600 mt-2 font-medium">
-                {language === 'es' ? 'Reconocimiento' : 'Recognition'}
-              </p>
+              <div className="relative z-10 pt-1">
+                <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                  {language === 'es' ? 'Reconocimiento' : 'Recognition'}
+                </p>
+              </div>
             </div>
 
             <div className="text-center reveal-on-scroll group">
-              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-102 hover:shadow-lg mb-4">
                 <img 
                   src="/app-screenshots/Dietas.png" 
                   alt="Diet Management"
                   className="w-full h-auto rounded-lg"
                 />
               </div>
-              <p className="text-xs sm:text-sm text-gray-600 mt-2 font-medium">
-                {language === 'es' ? 'Dietas' : 'Diets'}
-              </p>
+              <div className="relative z-10 pt-1">
+                <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                  {language === 'es' ? 'Dietas' : 'Diets'}
+                </p>
+              </div>
             </div>
 
             <div className="text-center reveal-on-scroll group">
-              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-102 hover:shadow-lg mb-4">
                 <img 
                   src="/app-screenshots/Alergia.png" 
                   alt="Allergy Detection"
                   className="w-full h-auto rounded-lg"
                 />
               </div>
-              <p className="text-xs sm:text-sm text-gray-600 mt-2 font-medium">
-                {language === 'es' ? 'Alergias' : 'Allergies'}
-              </p>
+              <div className="relative z-10 pt-1">
+                <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                  {language === 'es' ? 'Alergias' : 'Allergies'}
+                </p>
+              </div>
             </div>
 
             <div className="text-center reveal-on-scroll group">
-              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <div className="relative overflow-hidden rounded-xl shadow-md bg-white p-2 transform transition-all duration-300 hover:scale-102 hover:shadow-lg mb-4">
                 <img 
                   src="/app-screenshots/Perfil.png" 
                   alt="User Profile"
                   className="w-full h-auto rounded-lg"
                 />
               </div>
-              <p className="text-xs sm:text-sm text-gray-600 mt-2 font-medium">
-                {language === 'es' ? 'Perfil' : 'Profile'}
-              </p>
+              <div className="relative z-10 pt-1">
+                <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                  {language === 'es' ? 'Perfil' : 'Profile'}
+                </p>
+              </div>
             </div>
           </div>
         </div>
