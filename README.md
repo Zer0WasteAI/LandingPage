@@ -386,6 +386,181 @@ npm run lint     # Linting con ESLint
 - [ ] **Bundle splitting**: Lazy loading por rutas
 - [ ] **CDN**: Cloudflare para assets estáticos
 
+## 📊 Dashboard QA
+
+### 🧪 Guía de Pruebas del Dashboard en Tiempo Real
+
+El dashboard (`/dashboard`) implementa actualizaciones en tiempo real usando Firebase Firestore y muestra métricas de impacto de los últimos 30 días.
+
+#### Prerequisitos
+1. **Configurar variables de entorno** en `.env.local`:
+   ```env
+   # Firebase Client (NEXT_PUBLIC_*)
+   NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+   NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
+
+   # Firebase Admin SDK
+   FIREBASE_ADMIN_PROJECT_ID=your-project-id
+   FIREBASE_ADMIN_CLIENT_EMAIL=firebase-adminsdk@your-project.iam.gserviceaccount.com
+   FIREBASE_ADMIN_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+   ```
+
+2. **Desplegar índices de Firestore**:
+   ```bash
+   firebase deploy --only firestore:indexes
+   ```
+
+3. **Instalar dependencias** (si no lo has hecho):
+   ```bash
+   npm install
+   ```
+
+#### 🚀 Paso 1: Ejecutar el Servidor de Desarrollo
+```bash
+npm run dev
+```
+
+Visita `http://localhost:3000/dashboard`
+
+**Nota**: Si tu app implementa autenticación, asegúrate de tener una sesión válida (cookie `zwa_session` u otra) o comenta temporalmente el middleware de autenticación en `/middleware.ts`.
+
+#### 🔴 Paso 2: Prueba de Actualización Live - Reconocimientos en Tiempo Real
+
+**Objetivo**: Verificar que el contador de "Reconocimientos" se actualice automáticamente sin recargar la página.
+
+1. **Estado inicial**: Observa el valor actual del KPI "Reconocimientos" en el dashboard
+2. **Insertar documento manualmente** en Firestore:
+   - Ve a Firebase Console → Firestore Database
+   - Colección: `recognition_results`
+   - Agregar documento con estos campos:
+     ```json
+     {
+       "created_at": [Timestamp NOW],
+       "user_email": "test@example.com",
+       "items_detected": 3,
+       "confidences": [0.95, 0.88, 0.92]
+     }
+     ```
+3. **Verificación**:
+   - ✅ El contador de "Reconocimientos" debe incrementarse automáticamente
+   - ✅ El documento aparece en la lista de "Reconocimientos Recientes" al final de la página
+   - ✅ Muestra: email, tiempo relativo ("hace X minutos"), cantidad de alimentos, confianza promedio
+
+**Resultado esperado**: Actualización instantánea sin F5 gracias a `onSnapshot`.
+
+#### 🟢 Paso 3: Prueba de Serie Temporal - Reducción de Desperdicio
+
+**Objetivo**: Verificar que los datos históricos se reflejan en el gráfico de líneas.
+
+1. **Crear/modificar batch consumido** en Firestore:
+   - Navega a cualquier documento de usuario en `users/{userId}/inventory/{itemId}/batches/{batchId}`
+   - O crea manualmente:
+     ```json
+     {
+       "status": "CONSUMED",
+       "quantity": 500,
+       "unit": "g",
+       "updated_at": [Timestamp de ayer]
+     }
+     ```
+
+2. **Recargar datos**:
+   - Presiona F5 en el dashboard o espera el próximo fetch automático
+   - O llama directamente a `http://localhost:3000/api/stats` en el navegador
+
+3. **Verificación**:
+   - ✅ El KPI "Kg Salvados" debe reflejar la conversión (500g = 0.5kg)
+   - ✅ El gráfico de "Reducción de Desperdicio (30 días)" muestra un punto en la fecha del batch
+   - ✅ El tooltip del gráfico muestra la fecha correcta y el valor en kg
+
+#### 🟡 Paso 4: Prueba de Aprovechamiento
+
+**Objetivo**: Validar el cálculo del porcentaje de aprovechamiento.
+
+1. **Crear batches con diferentes estados**:
+   - 7 batches con `status: "CONSUMED"`
+   - 3 batches con `status: "EXPIRED"`
+   - Todos con `updated_at` en los últimos 30 días
+
+2. **Resultado esperado**:
+   - Aprovechamiento = (7 / (7+3)) × 100 = **70.0%**
+
+3. **Verificación**:
+   - ✅ El KPI "Aprovechamiento" muestra "70.0%"
+   - ✅ El hint indica "Consumido vs. expirado"
+
+#### 🔵 Paso 5: Prueba de Colecciones Anidadas (Collection Groups)
+
+**Objetivo**: Verificar que las queries `collectionGroup` funcionan correctamente.
+
+1. **Estructura esperada**:
+   ```
+   users/{userId}/inventory/{itemId}/batches/{batchId}
+   users/{userId}/recipes/{recipeId}
+   ```
+
+2. **Datos de prueba para recipes**:
+   ```json
+   {
+     "isCooked": true,
+     "createdAt": [Timestamp últimos 30 días],
+     "co2Saved": 2.5,
+     "waterSaved": 150,
+     "landSaved": 0.8
+   }
+   ```
+
+3. **Verificación**:
+   - ✅ El KPI "CO₂ Evitado" suma todos los valores de `co2Saved`
+   - ✅ Los valores se actualizan correctamente tras agregar/modificar recipes
+
+#### 🧹 Limpieza de Datos de Prueba
+
+Después de las pruebas, elimina los documentos de prueba:
+```bash
+# Opción 1: Desde Firebase Console
+# Opción 2: Script de limpieza (crear según necesidad)
+```
+
+#### ⚠️ Errores Comunes
+
+**Error: "Missing required index"**
+- **Solución**: Ejecuta `firebase deploy --only firestore:indexes`
+- O crea manualmente desde Firebase Console → Firestore → Indexes
+
+**Error: "Firebase Admin not initialized"**
+- **Solución**: Verifica que las variables `FIREBASE_ADMIN_*` estén correctamente configuradas
+- Revisa que `FIREBASE_ADMIN_PRIVATE_KEY` incluya los saltos de línea escapados (`\n`)
+
+**Dashboard muestra 0 en todos los KPIs**
+- **Causa**: No hay datos en los últimos 30 días o las queries no encuentran documentos
+- **Solución**: Verifica que existan documentos con `created_at` o `updated_at` recientes
+
+**Gráfico aparece vacío**
+- **Causa**: No hay batches con `status: "CONSUMED"` en los últimos 30 días
+- **Solución**: Inserta datos de prueba según Paso 3
+
+#### 📈 Métricas de Performance
+
+- **Tiempo de carga inicial**: < 2 segundos
+- **Actualización live**: < 500ms desde inserción en Firestore
+- **API `/api/stats`**: < 3 segundos (depende del volumen de datos)
+
+#### 🔄 Testing Continuo
+
+Para desarrollo continuo:
+```bash
+# Terminal 1: Servidor Next.js
+npm run dev
+
+# Terminal 2: Observa logs de Firestore
+# (Opcional) Activa debug en navegador para ver queries en tiempo real
+```
+
 ## 📞 Contacto y Soporte
 
 ### 👨‍💻 Desarrollador
