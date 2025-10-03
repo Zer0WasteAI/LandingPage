@@ -1,5 +1,5 @@
 import 'server-only';
-import { adminDb } from './firebaseAdmin';
+import { getAdminDb } from './firebaseAdmin';
 import { Timestamp } from 'firebase-admin/firestore';
 import { convertToKg, aprovechamiento } from './calculations';
 
@@ -27,14 +27,14 @@ export async function kpisLast30Days(): Promise<KPIData> {
   const thirtyDaysAgoTimestamp = Timestamp.fromDate(thirtyDaysAgo);
 
   // 1. Recognition results completados (last 30 days)
-  const recognitionsSnapshot = await adminDb
+  const recognitionsSnapshot = await getAdminDb()
     .collection('recognition_results')
     .where('created_at', '>=', thirtyDaysAgoTimestamp)
     .get();
   const recognitionsCompleted = recognitionsSnapshot.size;
 
   // 2. Batches CONSUMED y EXPIRED (last 30 days)
-  const batchesSnapshot = await adminDb
+  const batchesSnapshot = await getAdminDb()
     .collectionGroup('batches')
     .where('updated_at', '>=', thirtyDaysAgoTimestamp)
     .get();
@@ -58,7 +58,7 @@ export async function kpisLast30Days(): Promise<KPIData> {
   });
 
   // 3. Recipes cooked (last 30 days) - CO2, water, land
-  const recipesSnapshot = await adminDb
+  const recipesSnapshot = await getAdminDb()
     .collectionGroup('recipes')
     .where('isCooked', '==', true)
     .where('createdAt', '>=', thirtyDaysAgoTimestamp)
@@ -95,7 +95,7 @@ export async function wasteReductionSeries(): Promise<WasteReductionPoint[]> {
   const thirtyDaysAgoTimestamp = Timestamp.fromDate(thirtyDaysAgo);
 
   // Obtener batches CONSUMED de los últimos 30 días
-  const batchesSnapshot = await adminDb
+  const batchesSnapshot = await getAdminDb()
     .collectionGroup('batches')
     .where('status', '==', 'CONSUMED')
     .where('updated_at', '>=', thirtyDaysAgoTimestamp)

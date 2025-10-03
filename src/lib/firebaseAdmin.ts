@@ -1,22 +1,44 @@
 import { initializeApp, getApps, cert, App } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
-import { getAuth } from 'firebase-admin/auth';
+import { getFirestore, Firestore } from 'firebase-admin/firestore';
+import { getAuth, Auth } from 'firebase-admin/auth';
 
-let app: App;
+let app: App | undefined;
 
-// Inicializar Firebase Admin solo si no existe una instancia previa
-if (getApps().length === 0) {
+function getFirebaseApp(): App {
+  if (app) {
+    return app;
+  }
+
+  if (getApps().length > 0) {
+    app = getApps()[0];
+    return app;
+  }
+
+  // Check if required environment variables are available
+  const projectId = process.env.FIREBASE_ADMIN_PROJECT_ID;
+  const clientEmail = process.env.FIREBASE_ADMIN_CLIENT_EMAIL;
+  const privateKey = process.env.FIREBASE_ADMIN_PRIVATE_KEY;
+
+  if (!projectId || !clientEmail || !privateKey) {
+    throw new Error('Firebase Admin environment variables are not configured. Please set FIREBASE_ADMIN_PROJECT_ID, FIREBASE_ADMIN_CLIENT_EMAIL, and FIREBASE_ADMIN_PRIVATE_KEY.');
+  }
+
   app = initializeApp({
     credential: cert({
-      projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      projectId,
+      clientEmail,
+      privateKey: privateKey.replace(/\\n/g, '\n'),
     }),
   });
-} else {
-  app = getApps()[0];
+
+  return app;
 }
 
-// Exportar servicios
-export const adminDb = getFirestore(app);
-export const adminAuth = getAuth(app);
+// Lazy getters that only initialize when called
+export function getAdminDb(): Firestore {
+  return getFirestore(getFirebaseApp());
+}
+
+export function getAdminAuth(): Auth {
+  return getAuth(getFirebaseApp());
+}
