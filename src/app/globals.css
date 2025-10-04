@@ -442,6 +442,16 @@ h4 {
   transform: scale(1.02);
 }
 
+/* YouTube iframe styling */
+iframe {
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.group:hover iframe {
+  transform: scale(1.01);
+}
+
 /* Custom video controls styling */
 video::-webkit-media-controls {
   display: flex !important;

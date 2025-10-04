@@ -540,47 +540,34 @@ export default function Home() {
           
           <div className="max-w-4xl mx-auto reveal-on-scroll">
             <div className="relative bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 video-bg-pattern">
-              {/* Video Container */}
-              <div className="relative aspect-video bg-black rounded-2xl sm:rounded-3xl overflow-hidden video-container">
-                <video 
-                  className="w-full h-full object-cover rounded-2xl sm:rounded-3xl"
-                  controls
-                  preload="metadata"
-                  poster="/app-screenshots/Home_.png.png"
-                >
-                  <source src="/videos/demo.mp4" type="video/mp4" />
-                  <p className="text-white text-center py-8">
-                    {language === 'es' 
-                      ? 'Tu navegador no soporta videos HTML5. '
-                      : 'Your browser does not support HTML5 video. '
-                    }
-                    <a href="/videos/demo.mp4" className="text-blue-400 underline hover:text-blue-300">
-                      {language === 'es' ? 'Descargar el video' : 'Download the video'}
-                    </a>
-                  </p>
-                </video>
-                
-                {/* Overlay with play button - hidden when video controls are visible */}
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <FontAwesomeIcon icon={faPlay} className="text-white text-xl sm:text-2xl ml-1" />
-                  </div>
-                </div>
+              {/* YouTube Video Container */}
+              <div className="relative aspect-video rounded-2xl sm:rounded-3xl overflow-hidden">
+                <iframe 
+                  className="w-full h-full rounded-2xl sm:rounded-3xl"
+                  src="https://www.youtube.com/embed/T-DebUbci2Q?rel=0&modestbranding=1&showinfo=0"
+                  title={language === 'es' ? 'Demo Oficial ZeroWasteAI' : 'Official ZeroWasteAI Demo'}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                ></iframe>
               </div>
               
               {/* Video Info Card */}
               <div className="absolute bottom-4 left-4 right-4 bg-white bg-opacity-95 backdrop-blur-md rounded-xl p-3 sm:p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-[var(--primary-green)] rounded-full flex items-center justify-center">
-                      <FontAwesomeIcon icon={faSeedling} className="text-white text-sm" />
+                    <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 text-sm sm:text-base">
                         {language === 'es' ? 'Demo Oficial ZeroWasteAI' : 'Official ZeroWasteAI Demo'}
                       </h3>
                       <p className="text-xs sm:text-sm text-gray-600">
-                        {language === 'es' ? '2:30 min · Guía completa' : '2:30 min · Complete guide'}
+                        {language === 'es' ? 'En YouTube · Guía completa' : 'On YouTube · Complete guide'}
                       </p>
                     </div>
                   </div>
@@ -590,7 +577,7 @@ export default function Home() {
                       <span className="font-medium">4.9</span>
                     </div>
                     <p className="text-xs text-gray-500">
-                      {language === 'es' ? '10k+ vistas' : '10k+ views'}
+                      {language === 'es' ? 'YouTube' : 'YouTube'}
                     </p>
                   </div>
                 </div>

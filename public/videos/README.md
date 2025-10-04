@@ -1,33 +1,50 @@
-# Demo Video - Important Note
+# Demo Video - YouTube Integration
 
 ## 🎬 Video Location
-The demo video (`demo.mp4`) should be placed in `public/videos/` directory.
+The demo video is now hosted on YouTube and embedded in the landing page.
 
-## 📋 Requirements
-- **File name:** `demo.mp4`
-- **Location:** `public/videos/demo.mp4`
-- **Recommended size:** Under 50MB (for better loading)
-- **Format:** MP4 (H.264 codec recommended)
+## 📋 Current Setup
+- **Video URL:** https://youtu.be/T-DebUbci2Q
+- **Embed URL:** https://www.youtube.com/embed/T-DebUbci2Q
+- **Location:** Embedded via iframe in the landing page
+- **Benefits:** No file size limits, better loading performance, YouTube features
 
-## ⚠️ Important
-The video file is excluded from Git due to its large size (150MB+). 
-
-### For Development:
-- Ensure you have the `demo.mp4` file in the correct location
-- The video section will work perfectly with any MP4 file named `demo.mp4`
-
-### For Production:
-- Upload the video file separately to your hosting provider
-- Or use a video hosting service (YouTube, Vimeo, etc.) and embed the link
-
-## 🔄 Alternative Solutions:
-1. **Compress the video** to under 50MB
-2. **Use video hosting** (YouTube, Vimeo) and update the video src
-3. **Use CDN** for video delivery
+## ✅ Advantages of YouTube Integration
+- **No file size restrictions** - No more GitHub 100MB limit issues
+- **Better performance** - YouTube's CDN ensures fast loading worldwide
+- **Mobile optimized** - YouTube automatically adapts to all devices
+- **Analytics** - Track video engagement through YouTube Analytics
+- **SEO benefits** - YouTube is the second largest search engine
+- **Professional appearance** - Native YouTube player controls
 
 ## 🛠️ Current Implementation:
-The landing page expects the video at `/videos/demo.mp4` and includes:
-- Responsive video player
-- Custom controls styling
-- Poster image fallback
-- Mobile-optimized layout
+The landing page now includes:
+- **YouTube iframe embed** with responsive aspect ratio
+- **Custom overlay card** with video information
+- **YouTube icon** in the info card
+- **Smooth hover animations** and transitions
+- **Mobile-optimized layout** that works on all devices
+- **Bilingual support** for video descriptions
+
+## 🔧 Technical Details:
+```html
+<iframe 
+  src="https://www.youtube.com/embed/T-DebUbci2Q?rel=0&modestbranding=1&showinfo=0"
+  title="Demo Oficial ZeroWasteAI"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+  loading="lazy"
+></iframe>
+```
+
+### URL Parameters Used:
+- `rel=0` - Shows fewer related videos at the end
+- `modestbranding=1` - Reduces YouTube branding
+- `showinfo=0` - Cleaner appearance (legacy parameter)
+
+## 🎯 Benefits for Users:
+- **Instant loading** - No download required
+- **Familiar interface** - Everyone knows YouTube controls
+- **Quality selection** - Users can choose video quality
+- **Fullscreen mode** - Native YouTube fullscreen experience
+- **Accessibility** - YouTube's built-in accessibility features
