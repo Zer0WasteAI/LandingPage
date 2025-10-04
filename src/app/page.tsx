@@ -372,10 +372,10 @@ export default function Home() {
             </div>
             
             <div className="hidden md:block">
-              <button className="btn-primary text-sm px-4 py-2">
+              <a href="/app-android" className="btn-primary text-sm px-4 py-2 inline-flex items-center">
                 <FontAwesomeIcon icon={faDownload} className="mr-2" />
                 {currentContent.nav.download}
-              </button>
+              </a>
             </div>
 
             {/* Mobile menu button */}
@@ -428,13 +428,14 @@ export default function Home() {
               {language === 'es' ? '🇺🇸 English' : '🇪🇸 Español'}
             </button>
             <div className="pt-4">
-              <button 
-                className="btn-primary w-full text-center py-4 text-base"
+              <a
+                href="/app-android"
+                className="btn-primary w-full text-center py-4 text-base inline-flex items-center justify-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FontAwesomeIcon icon={faDownload} className="mr-2" />
                 {currentContent.nav.download}
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -469,11 +470,19 @@ export default function Home() {
                 <FontAwesomeIcon icon={faAppleBrand} className="mr-2" />
                 {currentContent.hero.downloadIOS}
               </button>
-              <button className="btn-primary w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
+              <a href="/app-android" className="btn-primary w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 inline-flex items-center justify-center">
                 <FontAwesomeIcon icon={faGooglePlay} className="mr-2" />
                 {currentContent.hero.downloadAndroid}
-              </button>
-              <button className="btn-secondary w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
+              </a>
+              <button 
+                onClick={() => {
+                  const demoSection = document.getElementById('demo-video');
+                  if (demoSection) {
+                    demoSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="btn-secondary w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
+              >
                 <FontAwesomeIcon icon={faPlay} className="mr-2" />
                 {currentContent.hero.watchDemo}
               </button>
@@ -508,6 +517,122 @@ export default function Home() {
                 <div className="absolute top-1/2 -right-4 sm:-right-6 lg:-right-8 w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-[var(--accent-blue)] rounded-full flex items-center justify-center text-white animate-[float_1.8s_ease-in-out_infinite_2s] shadow-lg">
                   <FontAwesomeIcon icon={faLemon} className="text-xs sm:text-sm" />
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Video Section */}
+      <section id="demo-video" className="py-12 sm:py-16 px-4 bg-gradient-to-br from-white to-gray-50">
+        <div className="container-responsive">
+          <div className="text-center mb-8 sm:mb-12 reveal-on-scroll">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+              🎬 {language === 'es' ? 'Mira ZeroWasteAI en Acción' : 'See ZeroWasteAI in Action'}
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-2">
+              {language === 'es' 
+                ? 'Descubre en menos de 2 minutos cómo nuestra IA puede transformar completamente la forma en que gestionas los alimentos en tu hogar'
+                : 'Discover in under 2 minutes how our AI can completely transform the way you manage food in your home'
+              }
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto reveal-on-scroll">
+            <div className="relative bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 video-bg-pattern">
+              {/* Video Container */}
+              <div className="relative aspect-video bg-black rounded-2xl sm:rounded-3xl overflow-hidden video-container">
+                <video 
+                  className="w-full h-full object-cover rounded-2xl sm:rounded-3xl"
+                  controls
+                  preload="metadata"
+                  poster="/app-screenshots/Home_.png.png"
+                >
+                  <source src="/videos/demo.mp4" type="video/mp4" />
+                  <p className="text-white text-center py-8">
+                    {language === 'es' 
+                      ? 'Tu navegador no soporta videos HTML5. '
+                      : 'Your browser does not support HTML5 video. '
+                    }
+                    <a href="/videos/demo.mp4" className="text-blue-400 underline hover:text-blue-300">
+                      {language === 'es' ? 'Descargar el video' : 'Download the video'}
+                    </a>
+                  </p>
+                </video>
+                
+                {/* Overlay with play button - hidden when video controls are visible */}
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <FontAwesomeIcon icon={faPlay} className="text-white text-xl sm:text-2xl ml-1" />
+                  </div>
+                </div>
+              </div>
+              
+              {/* Video Info Card */}
+              <div className="absolute bottom-4 left-4 right-4 bg-white bg-opacity-95 backdrop-blur-md rounded-xl p-3 sm:p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-[var(--primary-green)] rounded-full flex items-center justify-center">
+                      <FontAwesomeIcon icon={faSeedling} className="text-white text-sm" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 text-sm sm:text-base">
+                        {language === 'es' ? 'Demo Oficial ZeroWasteAI' : 'Official ZeroWasteAI Demo'}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-gray-600">
+                        {language === 'es' ? '2:30 min · Guía completa' : '2:30 min · Complete guide'}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="flex items-center text-yellow-500 text-sm">
+                      <span className="mr-1">⭐</span>
+                      <span className="font-medium">4.9</span>
+                    </div>
+                    <p className="text-xs text-gray-500">
+                      {language === 'es' ? '10k+ vistas' : '10k+ views'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Video Features */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">
+              <div className="text-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow reveal-on-scroll">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <FontAwesomeIcon icon={faCameraRetro} className="text-blue-600 text-lg" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                  {language === 'es' ? 'Escaneo en Vivo' : 'Live Scanning'}
+                </h3>
+                <p className="text-gray-600 text-xs sm:text-sm">
+                  {language === 'es' ? 'Ve cómo funciona el reconocimiento de alimentos en tiempo real' : 'See how real-time food recognition works'}
+                </p>
+              </div>
+              
+              <div className="text-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow reveal-on-scroll">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <FontAwesomeIcon icon={faUtensils} className="text-green-600 text-lg" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                  {language === 'es' ? 'Recetas IA' : 'AI Recipes'}
+                </h3>
+                <p className="text-gray-600 text-xs sm:text-sm">
+                  {language === 'es' ? 'Mira cómo se generan recetas personalizadas instantáneamente' : 'Watch how personalized recipes are generated instantly'}
+                </p>
+              </div>
+              
+              <div className="text-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow reveal-on-scroll">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <FontAwesomeIcon icon={faChartLine} className="text-purple-600 text-lg" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                  {language === 'es' ? 'Impacto Medible' : 'Measurable Impact'}
+                </h3>
+                <p className="text-gray-600 text-xs sm:text-sm">
+                  {language === 'es' ? 'Descubre cómo tracked tu impacto ambiental positivo' : 'Discover how to track your positive environmental impact'}
+                </p>
               </div>
             </div>
           </div>
@@ -949,10 +1074,10 @@ export default function Home() {
               <FontAwesomeIcon icon={faAppleBrand} className="mr-2" />
               {currentContent.hero.downloadIOS}
             </button>
-            <button className="bg-white text-[var(--primary-green)] hover:bg-gray-100 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-colors flex items-center justify-center text-sm sm:text-base">
+            <a href="/app-android" className="bg-white text-[var(--primary-green)] hover:bg-gray-100 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-colors flex items-center justify-center text-sm sm:text-base">
               <FontAwesomeIcon icon={faGooglePlay} className="mr-2" />
               {currentContent.hero.downloadAndroid}
-            </button>
+            </a>
           </div>
           
           <p className="mt-4 sm:mt-6 text-xs sm:text-sm opacity-75 px-4">
